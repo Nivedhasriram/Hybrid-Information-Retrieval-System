@@ -1,0 +1,10 @@
+scikit-learn
+pandas
+numpy
+scipy
+joblib
+streamlit
+sentence-transformers
+faiss-cpu   # optional; if install fails, use brute-force numpy
+tqdm
+nltk

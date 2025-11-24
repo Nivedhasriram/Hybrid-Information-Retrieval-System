@@ -1,0 +1,69 @@
+[2025-11-23 15:50:03] START PROJECT CHECK
+[2025-11-23 15:50:03] Project root: /Users/nivedhasriram/Desktop/ir-rf
+[2025-11-23 15:50:03] Raw cran file (expected): /mnt/data/cran.all.1400.xml
+[2025-11-23 15:50:03] 
+[2025-11-23 15:50:03] 1) Python & venv
+[2025-11-23 15:50:03] Python executable: /Users/nivedhasriram/Desktop/ir-rf/.venv/bin/python3
+[2025-11-23 15:50:03] Python version: 3.9.6 (default, Feb  3 2024, 15:58:27)  [Clang 15.0.0 (clang-1500.3.9.4)]
+[2025-11-23 15:50:03] Virtualenv active: True (/Users/nivedhasriram/Desktop/ir-rf/.venv)
+[2025-11-23 15:50:03] 
+[2025-11-23 15:50:03] 2) Files / directories sanity check
+[2025-11-23 15:50:03] src                                       -> OK
+[2025-11-23 15:50:03] src/data_loader.py                        -> OK
+[2025-11-23 15:50:03] src/indexer.py                            -> OK
+[2025-11-23 15:50:03] src/semantic_index.py                     -> OK
+[2025-11-23 15:50:03] src/hybrid_retrieve.py                    -> OK
+[2025-11-23 15:50:03] src/app.py                                -> OK
+[2025-11-23 15:50:03] scripts/convert_cranfield.py              -> OK
+[2025-11-23 15:50:03] scripts/convert_queries_xml.py            -> OK
+[2025-11-23 15:50:03] data/cranfield                            -> OK
+[2025-11-23 15:50:03] data/cranfield/corpus.jsonl               -> OK
+[2025-11-23 15:50:03] raw cran path exists: False
+[2025-11-23 15:50:03] 
+[2025-11-23 15:50:03] 3) Run conversion scripts (if present)
+[2025-11-23 15:50:03] Running scripts/convert_queries_xml.py ...
+[2025-11-23 15:50:03] rc=0
+[2025-11-23 15:50:03] OUT: Parsed 225 queries
+[2025-11-23 15:50:03] Running scripts/convert_cranfield.py ...
+[2025-11-23 15:50:03] rc=0
+[2025-11-23 15:50:03] OUT: Docs written: 1400 (from cran.all.1400)
+[2025-11-23 15:50:03] 
+[2025-11-23 15:50:03] 4) Import src.data_loader and load data
+[2025-11-23 15:50:04] Calling load_cranfield() ...
+[2025-11-23 15:50:04] Loaded corpus rows: 1400
+[2025-11-23 15:50:04] Loaded queries rows: 225
+[2025-11-23 15:50:04] Loaded qrels entries: 225
+[2025-11-23 15:50:04] Sample doc id/title: 1 / experimental investigation of the aerodynamics of a wing in a slipstream .
+[2025-11-23 15:50:04] Sample query: Q1 / what similarity laws must be obeyed when constructing aeroelastic models of heated high sp
+[2025-11-23 15:50:04] 
+[2025-11-23 15:50:04] 5) TF-IDF index build/load check (src.indexer)
+[2025-11-23 15:50:05] Calling src.indexer.load_index() ...
+[2025-11-23 15:50:05] Loaded TF-IDF: matrix shape (1400, 73068), docs rows 1400
+[2025-11-23 15:50:05] 
+[2025-11-23 15:50:05] 6) Semantic index check (src.semantic_index)
+[2025-11-23 15:50:08] Calling src.semantic_index.load_semantic_index() ...
+[2025-11-23 15:50:13] Loaded embeddings shape: (1400, 384)
+[2025-11-23 15:50:13] 
+[2025-11-23 15:50:13] 7) Hybrid retrieval smoke test (src.hybrid_retrieve.hybrid_search)
+[2025-11-23 15:50:13] Running hybrid_search on query: what similarity laws must be obeyed when constructing aeroelastic models of heated high speed aircraft .
+[2025-11-23 15:50:17] hybrid_search returned rows: 5
+[2025-11-23 15:50:17] Sample results (id,title):
+[2025-11-23 15:50:17]   486: similarity laws for aerothermoelastic testing .
+[2025-11-23 15:50:17]   12: some structural and aerelastic considerations of high speed flight .
+[2025-11-23 15:50:17]   13: similarity laws for stressing heated wings .
+[2025-11-23 15:50:17]   184: scale models for thermo-aeroelastic research .
+[2025-11-23 15:50:17]   51: theory of aircraft structural models subjected to aerodynamic heating and extern
+[2025-11-23 15:50:17] 
+[2025-11-23 15:50:17] 8) Quick evaluation if qrels and results available
+[2025-11-23 15:50:21] Eval Q Q1: P@5=1.000, nDCG@5=1.000
+[2025-11-23 15:50:26] Eval Q Q2: P@5=0.600, nDCG@5=0.967
+[2025-11-23 15:50:30] Eval Q Q4: P@5=0.000, nDCG@5=0.000
+[2025-11-23 15:50:30] 
+[2025-11-23 15:50:30] 9) Syntax check for src/app.py
+[2025-11-23 15:50:30] src/app.py: syntax OK (parsed)
+[2025-11-23 15:50:30] 
+[2025-11-23 15:50:30] 10) Optional: try importing src.app (may run Streamlit code) - SKIPPED by default
+[2025-11-23 15:50:30] If you want to attempt import that runs side-effects, re-run the script with IMPORT_APP=1 env var.
+[2025-11-23 15:50:30] Skipping import of src.app (to avoid server start).
+[2025-11-23 15:50:30] 
+[2025-11-23 15:50:30] PROJECT CHECK COMPLETE
