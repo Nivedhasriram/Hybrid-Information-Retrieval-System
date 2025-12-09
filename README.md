@@ -36,6 +36,9 @@ Converted to JSONL for efficient indexing.
 ### Evaluation
 - Supports **Precision@k** and **nDCG@k** using qrels.
 
+### Demo Video
+- https://drive.google.com/file/d/1241wxDvx3g5_ouVi13EHPepzPKHfwtsD/view?usp=sharing
+
 ## Run the App
 streamlit run src/app.py
 The app opens at: http://localhost:8501
@@ -50,4 +53,6 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
+
+
 
